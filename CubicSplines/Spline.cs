@@ -6,61 +6,60 @@ using System.Windows.Forms;
 namespace CubicSplines
 {
     /// <summary>
-    ///     Класс для построения кубических сплайнов выполнения интерполяции
+    /// Класс для построения кубических сплайнов выполнения интерполяции
     /// </summary>
     internal class Spline
     {
         /// <summary>
-        ///     Коэффициенты a кубических сплайнов
+        /// Коэффициенты a кубических сплайнов
         /// </summary>
         private readonly double[] a = new double[0];
 
         /// <summary>
-        ///     Коэффициенты b кубических сплайнов
+        /// Коэффициенты b кубических сплайнов
         /// </summary>
         private readonly double[] b = new double[0];
 
         /// <summary>
-        ///     Коэффициенты c кубических сплайнов
+        /// Коэффициенты c кубических сплайнов
         /// </summary>
         private readonly double[] c = new double[0];
 
         /// <summary>
-        ///     Коэффициенты d кубических сплайнов
+        /// Коэффициенты d кубических сплайнов
         /// </summary>
         private readonly double[] d = new double[0];
 
         /// <summary>
-        ///     Длины отрезков разбиения
+        /// Длины отрезков разбиения
         /// </summary>
         private readonly double[] h = new double[0];
 
         /// <summary>
-        ///     Количество точек разбиения
+        /// Количество точек разбиения
         /// </summary>
         private readonly int n;
 
         /// <summary>
-        ///     Количество отрезков разбиения
+        /// Количество отрезков разбиения
         /// </summary>
         private readonly int n1;
 
         /// <summary>
-        ///     Значения аргумента, то есть точки разбиения
+        /// Значения аргумента, то есть точки разбиения
         /// </summary>
         private readonly double[] x = new double[0];
 
         /// <summary>
-        ///     Значения функции в точках разбиния
+        /// Значения функции в точках разбиения
         /// </summary>
         private readonly double[] y = new double[0];
 
         /// <summary>
-        ///     Кнструктор класса Spline
+        /// Конструктор класса Spline
         /// </summary>
         public Spline(Dictionary<double, double> x1)
         {
-            double a1 = 0;
             n = x1.Keys.Count;
             n1 = n > 0 ? n - 1 : 0;
             x = new double[n];
@@ -72,7 +71,7 @@ namespace CubicSplines
             d = new double[n1];
             for (var i = 0; i < n; i++)
             {
-                a1 = x1.Keys.ElementAt(i);
+                var a1 = x1.Keys.ElementAt(i);
                 x[i] = a1;
                 y[i] = x1[a1];
             }
@@ -86,15 +85,14 @@ namespace CubicSplines
         }
 
         /// <summary>
-        ///     Строка для вывода i-го сплайна
+        /// Строка для вывода i-го сплайна
         /// </summary>
-        public string SplineToString(int i)
+        private string SplineToString(int i)
         {
             var s = "";
             if (i >= 0 && i < n1)
             {
-                s = string.Format(
-                    "{1:0.###}+{2:0.###}(x-{0})+{3:0.###}(x-{0})^2+{4:0.###}(x-{0})^3,",
+                s = string.Format("{1:0.###}+{2:0.###}(x-{0})+{3:0.###}(x-{0})^2+{4:0.###}(x-{0})^3,",
                     x[i], a[i], b[i], c[i], d[i]);
             }
 
@@ -102,9 +100,9 @@ namespace CubicSplines
         }
 
         /// <summary>
-        ///     Значение i-го сплайна в точке
+        /// Значение i-го сплайна в точке
         /// </summary>
-        public double SplineValue(double a1, int i)
+        private double SplineValue(double a1, int i)
         {
             double f = 0;
             if (i >= 0 && i < n1)
@@ -119,7 +117,7 @@ namespace CubicSplines
 
 
         /// <summary>
-        ///     Вывод информации о коэффициентах сплайнов и самих сплайнов в элемент управления DataGridView
+        /// Вывод информации о коэффициентах сплайнов и самих сплайнов в элемент управления DataGridView
         /// </summary>
         public void OutToDataGridView(DataGridView a1)
         {
@@ -147,7 +145,7 @@ namespace CubicSplines
         }
 
         /// <summary>
-        ///     Создание коэффициентов кубических сплайнов
+        /// Создание коэффициентов кубических сплайнов
         /// </summary>
         private void CreateCoefficients()
         {
@@ -191,7 +189,7 @@ namespace CubicSplines
         }
 
         /// <summary>
-        ///     Решение системы уравнений с трехдиагональной матрицей методом прогонки
+        /// Решение системы уравнений с трехдиагональной матрицей методом прогонки
         /// </summary>
         /// <param name="a">массив элементов под главной диагональю</param>
         /// <param name="b">главная диагональ</param>

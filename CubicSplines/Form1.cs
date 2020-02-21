@@ -6,53 +6,56 @@ namespace CubicSplines
 {
     public partial class Form1 : Form
     {
-        /*  Значения аргумента и функции,  */
+        /// <summary>
+        /// Значения аргумента и функции
+        /// </summary>
         private Dictionary<double, double> x = new Dictionary<double, double>();
 
-        /*  Конструктор формы,  */
         public Form1()
         {
             InitializeComponent();
         }
-
-        /*     Действия при выборе пункта меню для чтения 
-         *  значений аргумента и функции из файла,        */
-        private void прочитатьToolStripMenuItem_Click(object sender, EventArgs e)
+        
+        /// <summary>
+        /// Действия при выборе пункта меню для чтения значений аргумента и функции из файла
+        /// </summary>
+        private void ReadToolStripMenu_Click(object sender, EventArgs e)
         {
-            openFileDialog1.InitialDirectory = Application.StartupPath;
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            openFileDialog.InitialDirectory = Application.StartupPath;
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 x = WorkWithInformation.ReadFile(
-                    openFileDialog1.FileName);
+                    openFileDialog.FileName);
                 WorkWithInformation.WriteToDataGridView(
-                    x, dataGridView1);
+                    x, dataGridView);
                 var a = new Spline(x);
                 a.OutToDataGridView(dataGridView2);
             }
         }
 
-        /*     Действия при выборе пункта меню для 
-         *  создания значений аргумента и функции
-         *  как случайных чисел,                  */
-        private void случайныеЗначенияToolStripMenuItem_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Действия при выборе пункта меню для создания значений аргумента и функции как случайных чисел
+        /// </summary>
+        private void RandomValuesToolStripMenu_Click(object sender, EventArgs e)
         {
             x = WorkWithInformation.CreateDictionary(1, 10, 50);
             WorkWithInformation.WriteToDataGridView(
-                x, dataGridView1);
+                x, dataGridView);
             var a = new Spline(x);
             a.OutToDataGridView(dataGridView2);
         }
 
-        /*     Действия при выборе пункта меню для сохранения 
-         *  значений аргумента и функции в файл,        */
-        private void сохранитьЗначенияДляЗадачиВФайлToolStripMenuItem_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Действия при выборе пункта меню для сохранения значений аргумента и функции в файл
+        /// </summary>
+        private void SaveValuesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            saveFileDialog1.InitialDirectory = Application.StartupPath;
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK
-                && dataGridView1.RowCount > 0)
+            saveFileDialog.InitialDirectory = Application.StartupPath;
+            if (saveFileDialog.ShowDialog() == DialogResult.OK
+                && dataGridView.RowCount > 0)
             {
                 WorkWithInformation.WriteToFile(
-                    dataGridView1, saveFileDialog1.FileName);
+                    dataGridView, saveFileDialog.FileName);
             }
         }
     }

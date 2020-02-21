@@ -8,9 +8,8 @@ namespace CubicSplines
 {
     internal class WorkWithInformation
     {
-        /*  Вывод информции о функции в DataGridView,  */
-        public static void WriteToDataGridView(
-            Dictionary<double, double> a, DataGridView a1)
+        // Вывод информции о функции в DataGridView
+        public static void WriteToDataGridView(Dictionary<double, double> a, DataGridView a1)
         {
             a1.RowCount = a.Keys.Count;
             var i = 0;
@@ -23,9 +22,8 @@ namespace CubicSplines
             }
         }
 
-        /*  Запись в файл,   */
-        public static void WriteToFile(DataGridView a,
-            string s)
+        // Запись в файл
+        public static void WriteToFile(DataGridView a, string s)
         {
             var f1 = new StreamWriter(s);
             for (var i = 0; i < a.RowCount; i++)
@@ -36,21 +34,20 @@ namespace CubicSplines
             f1.Close();
         }
 
-        /*  Создание словаря случайных значений, 
-          случайные значения принадлежат отрезку [a1,b1],
-          количество значений  n,                              */
-        public static Dictionary<double, double> CreateDictionary(
-            double a1, double b1, int n)
+        /// <summary>
+        /// Создание словаря случайных значений,
+        /// случайные значения принадлежат отрезку [a1,b1], количество значений n
+        /// </summary>
+        public static Dictionary<double, double> CreateDictionary(double a1, double b1, int n)
         {
             var a = new Dictionary<double, double>();
             var q = new List<double>();
             var r = new Random();
-            double w = 0;
             q.Add(a1);
             q.Add(b1);
             while (q.Count < n)
             {
-                w = a1 + (b1 - a1) * (1.0 * r.Next(100)) / 100;
+                var w = a1 + (b1 - a1) * (1.0 * r.Next(100)) / 100;
                 if (!q.Contains(w))
                 {
                     q.Add(w);
@@ -67,31 +64,26 @@ namespace CubicSplines
         }
 
 
-        /*    Чтение информации из файла, 
-           прочитанные  значения 
-           сортируются по значению аргумента, 
-           между значениями в файле может быть 
-           любое число пробелов,  */
+        /// <summary>
+        /// Чтение информации из файла, прочитанные значения сортируются по значению аргумента, между значениями в файле может быть любое число пробелов
+        /// </summary>
         public static Dictionary<double, double> ReadFile(string s)
         {
             var a = new Dictionary<double, double>();
             var b = new Dictionary<double, double>();
             var f1 = new StreamReader(s, Encoding.Default);
-            double a1 = 0;
-            double a2 = 0;
-            string s1;
-            var q = new List<double>();
+            
             while (!f1.EndOfStream)
             {
-                s1 = f1.ReadLine();
+                var s1 = f1.ReadLine();
                 while (s1.Contains("  "))
                 {
                     s1 = s1.Replace("  ", " ");
                 }
 
                 var words = s1.Split();
-                if (double.TryParse(words[0], out a1) &&
-                    double.TryParse(words[1], out a2))
+                if (double.TryParse(words[0], out var a1) &&
+                    double.TryParse(words[1], out var a2))
                 {
                     b[a1] = a2;
                 }
@@ -104,11 +96,11 @@ namespace CubicSplines
 
             if (b.Keys.Count > 0)
             {
-                q = new List<double>(b.Keys);
+                var q = new List<double>(b.Keys);
                 q.Sort();
-                for (var i = 0; i < q.Count; i++)
+                foreach (var t in q)
                 {
-                    a[q[i]] = b[q[i]];
+                    a[t] = b[t];
                 }
             }
 
