@@ -28,8 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 =
+                new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 =
+                new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 =
+                new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.functionsTab = new System.Windows.Forms.TabPage();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,6 +51,7 @@
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.tabControl.SuspendLayout();
             this.functionsTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize) (this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize) (this.dataGridView)).BeginInit();
             this.splinesTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize) (this.dataGridView2)).BeginInit();
@@ -62,19 +70,36 @@
             this.tabControl.Location = new System.Drawing.Point(12, 30);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(558, 321);
+            this.tabControl.Size = new System.Drawing.Size(1171, 611);
             this.tabControl.TabIndex = 0;
             // 
             // functionsTab
             // 
             this.functionsTab.BackColor = System.Drawing.SystemColors.Control;
+            this.functionsTab.Controls.Add(this.chart1);
             this.functionsTab.Controls.Add(this.dataGridView);
             this.functionsTab.Location = new System.Drawing.Point(4, 24);
             this.functionsTab.Name = "functionsTab";
             this.functionsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.functionsTab.Size = new System.Drawing.Size(550, 293);
+            this.functionsTab.Size = new System.Drawing.Size(1163, 583);
             this.functionsTab.TabIndex = 0;
             this.functionsTab.Text = "Функция";
+            // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(323, 25);
+            this.chart1.Name = "chart1";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(834, 544);
+            this.chart1.TabIndex = 1;
+            this.chart1.Text = "chart1";
             // 
             // dataGridView
             // 
@@ -92,7 +117,7 @@
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersWidth = 58;
-            this.dataGridView.Size = new System.Drawing.Size(283, 254);
+            this.dataGridView.Size = new System.Drawing.Size(283, 544);
             this.dataGridView.TabIndex = 0;
             // 
             // Column1
@@ -114,7 +139,7 @@
             this.splinesTab.Location = new System.Drawing.Point(4, 24);
             this.splinesTab.Name = "splinesTab";
             this.splinesTab.Padding = new System.Windows.Forms.Padding(3);
-            this.splinesTab.Size = new System.Drawing.Size(550, 293);
+            this.splinesTab.Size = new System.Drawing.Size(736, 381);
             this.splinesTab.TabIndex = 1;
             this.splinesTab.Text = "Сплайны";
             // 
@@ -133,7 +158,7 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersWidth = 58;
-            this.dataGridView2.Size = new System.Drawing.Size(538, 283);
+            this.dataGridView2.Size = new System.Drawing.Size(538, 287);
             this.dataGridView2.TabIndex = 0;
             // 
             // menuStrip
@@ -141,7 +166,7 @@
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.задачаToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(579, 24);
+            this.menuStrip.Size = new System.Drawing.Size(1192, 24);
             this.menuStrip.TabIndex = 1;
             // 
             // задачаToolStripMenuItem
@@ -185,7 +210,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(579, 363);
+            this.ClientSize = new System.Drawing.Size(1192, 653);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.menuStrip);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold,
@@ -196,6 +221,7 @@
             this.Text = "Интерполяция сеточной функции кубическими сплайнами";
             this.tabControl.ResumeLayout(false);
             this.functionsTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize) (this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize) (this.dataGridView)).EndInit();
             this.splinesTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize) (this.dataGridView2)).EndInit();
@@ -221,6 +247,7 @@
         private System.Windows.Forms.ToolStripMenuItem readToolStripMenu;
         private System.Windows.Forms.ToolStripMenuItem SaveValuesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem randomValuesToolStripMenuItem;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }
 

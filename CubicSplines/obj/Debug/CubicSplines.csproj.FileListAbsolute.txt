@@ -36,3 +36,6 @@ C:\Users\velix\Desktop\CubicSplines\CubicSplines\obj\Debug\CubicSplines.Properti
 C:\Users\velix\Desktop\CubicSplines\CubicSplines\obj\Debug\CubicSplines.csproj.GenerateResource.cache
 C:\Users\velix\Desktop\CubicSplines\CubicSplines\obj\Debug\CubicSplines.exe
 C:\Users\velix\Desktop\CubicSplines\CubicSplines\obj\Debug\CubicSplines.pdb
+C:\Users\velix\Desktop\CubicSplines\CubicSplines\bin\Debug\System.Interactive.dll
+C:\Users\velix\Desktop\CubicSplines\CubicSplines\bin\Debug\System.Interactive.xml
+C:\Users\velix\Desktop\CubicSplines\CubicSplines\obj\Debug\CubicSplines.csproj.CopyComplete

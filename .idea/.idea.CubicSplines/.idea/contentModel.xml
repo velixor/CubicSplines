@@ -14,8 +14,9 @@
         <e p="Form1.cs" t="Include" />
         <e p="Form1.Designer.cs" t="Include" />
         <e p="Form1.resx" t="Include" />
-        <e p="Information.txt" t="Include" />
+        <e p="InformationService.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
         <e p="Program.cs" t="Include" />
         <e p="Properties" t="Include">
           <e p="AssemblyInfo.cs" t="Include" />
@@ -24,8 +25,8 @@
           <e p="Settings.Designer.cs" t="Include" />
           <e p="Settings.settings" t="Include" />
         </e>
+        <e p="README.txt" t="Include" />
         <e p="Spline.cs" t="Include" />
-        <e p="WorkWithInformation.cs" t="Include" />
       </e>
       <e p="CubicSplines.sln" t="IncludeFlat" />
       <e p="packages" t="ExcludeRecursive" />

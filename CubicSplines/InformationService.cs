@@ -6,10 +6,10 @@ using System.Windows.Forms;
 
 namespace CubicSplines
 {
-    internal class WorkWithInformation
+    internal class InformationService
     {
         // Вывод информции о функции в DataGridView
-        public static void WriteToDataGridView(Dictionary<double, double> a, DataGridView a1)
+        public static void WriteToDataGridView(DataGridView a1, Dictionary<double, double> a)
         {
             a1.RowCount = a.Keys.Count;
             var i = 0;
@@ -38,29 +38,21 @@ namespace CubicSplines
         /// Создание словаря случайных значений,
         /// случайные значения принадлежат отрезку [a1,b1], количество значений n
         /// </summary>
-        public static Dictionary<double, double> CreateDictionary(double a1, double b1, int n)
+        public static Dictionary<double, double> GetRandomFunction(double a1, double b1, int n)
         {
-            var a = new Dictionary<double, double>();
-            var q = new List<double>();
-            var r = new Random();
-            q.Add(a1);
-            q.Add(b1);
-            while (q.Count < n)
+            var random = new Random();
+            var function = new Dictionary<double, double>();
+            var h = (b1 - a1) / n;
+            
+            var x = a1;
+            while (x<=b1)
             {
-                var w = a1 + (b1 - a1) * (1.0 * r.Next(100)) / 100;
-                if (!q.Contains(w))
-                {
-                    q.Add(w);
-                }
+                var y = random.Next(-100, 100) / 10;
+                function.Add(x, y);
+                x += h;
             }
 
-            q.Sort();
-            for (var i = 0; i < n; i++)
-            {
-                a[q[i]] = 1.0 * r.Next(100) / 10;
-            }
-
-            return a;
+            return function;
         }
 
 
